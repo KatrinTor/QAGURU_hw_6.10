@@ -1,4 +1,4 @@
-from QAGURU_hw_6_10.test.pages.resourses import RegistrationPage
+from QAGURU_hw_6_10.pages.resourses import RegistrationPage
 
 
 def test_fill_form():
