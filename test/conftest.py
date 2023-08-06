@@ -9,7 +9,3 @@ def brwsr_cnfg():
     browser.config.window_width = 1900
     browser.config.window_height = 1080
     browser.config.base_url = 'https://demoqa.com'
-
-
-def path(image):
-    return str(Path(test.__file__).parent.joinpath(f'{image}').absolute())
