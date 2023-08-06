@@ -1,4 +1,5 @@
-from selene import browser
+import os
+from selene import browser, have
 
 
 class RegistrationPage:
@@ -55,4 +56,3 @@ class RegistrationPage:
         browser.element('.table').all('td').even.should(have.exact_texts(
             full_name, email, gender, phone_number, birthday,
             subject, hobbie, file_name, address, state_and_city))
-

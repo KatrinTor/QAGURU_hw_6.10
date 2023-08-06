@@ -1,8 +1,4 @@
-import os
-
-from selene import have
-from selene import browser
-from PageObject.RegistrationPage import RegistrationPage
+from QAGURU_hw_6_10.test.pages.resourses import RegistrationPage
 
 
 def test_fill_form():
@@ -32,15 +28,3 @@ def test_fill_form():
         'trusost.jpg',
         'ul. Kronverksky 49',
         'Haryana Karnal')
-
-    # browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-    # browser.element('.modal-body').should(have.text('Katrin Torsunova'))
-    # browser.element('.modal-body').should(have.text('Katrin@test'))
-    # browser.element('.modal-body').should(have.text('Female'))
-    # browser.element('.modal-body').should(have.text('8967625366'))
-    # browser.element('.modal-body').should(have.text('15 November,1994'))
-    # browser.element('.modal-body').should(have.text('Biology'))
-    # browser.element('.modal-body').should(have.text('Reading'))
-    # #browser.element('.modal-body').should(have.text('photo1687420339.jpeg'))
-    # browser.element('.modal-body').should(have.text('ul. Kronverksky 49'))
-    # browser.element('.modal-body').should(have.text('Haryana Karnal'))
