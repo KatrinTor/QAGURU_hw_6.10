@@ -1,6 +1,8 @@
 import os
 
 from selene import browser, have, command, be
+
+from QAGURU_hw_6_10.models import user
 from QAGURU_hw_6_10.models.user import User
 
 
@@ -19,6 +21,12 @@ class RegistrationPage:
 
     def open(self):
         browser.open('/automation-practice-form')
+        browser.driver.execute_script("$('footer').remove()")
+        browser.driver.execute_script("$('#fixedban').remove()")
+        browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
+            have.size_greater_than_or_equal(3)
+        )
+        browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
 
     def register(self, user: User):
         self.fist_name.type(user.first_name)
@@ -29,7 +37,7 @@ class RegistrationPage:
         self.fill_date_of_birth(user.date_of_birth)
         self.subject.type(user.subjects).press_enter()
         self.hobbies.element_by(have.text(user.hobbies)).element('..').click()
-        self.upload_image.send_keys(os.path.abspath(user.image))
+        self.upload_image.send_keys(os.path.abspath(user.picture))
         self.fill_current_address(user.current_address)
         self.fill_state(user.state)
         self.fill_city(user.city)
@@ -48,9 +56,8 @@ class RegistrationPage:
         browser.element(f'.react-datepicker__day--0{day}').click()
         return self
 
-    # def upload_file(self, image):
-    #     self.upload_image.send_keys(os.path.abspath(image))
-    #     return self
+    def upload_file(self, image):
+        browser.element('#uploadPicture').send_keys(os.path.abspath(user.picture))
 
     def fill_current_address(self, value):
         browser.element('#submit').perform(command.js.scroll_into_view)
@@ -83,7 +90,7 @@ class RegistrationPage:
                                  user.date_of_birth.year),
             f'{user.subjects}',
             f'{user.hobbies}',
-            f'{user.image}',
+            f'{user.picture}',
             f'{user.current_address}',
             f'{user.state} {user.city}'
         ))

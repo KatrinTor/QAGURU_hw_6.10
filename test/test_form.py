@@ -1,6 +1,7 @@
 import datetime
-from QAGURU_hw_6_10.pages.registration_page import RegistrationPage
+
 from QAGURU_hw_6_10.models.user import User
+from QAGURU_hw_6_10.pages.registration_page import RegistrationPage
 
 
 def test_filling_form():
@@ -15,7 +16,7 @@ def test_filling_form():
         date_of_birth=datetime.date(1994, 11, 15),
         hobbies='Reading',
         subjects='Biology',
-        image='trusost.jpg',
+        picture='trusost.jpg',
         current_address='ul. Kronverksky 49',
         state='Haryana',
         city='Karnal')

@@ -1,5 +1,4 @@
-from pathlib import Path
-import test
+from os import path
 import pytest
 from selene import browser
 
@@ -9,3 +8,7 @@ def brwsr_cnfg():
     browser.config.window_width = 1900
     browser.config.window_height = 1080
     browser.config.base_url = 'https://demoqa.com'
+
+path_for_picture = path.abspath(
+    path.join(path.dirname(__file__), path.join('image', 'meme.jpg'))
+)
