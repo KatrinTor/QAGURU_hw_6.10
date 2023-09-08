@@ -1,10 +1,16 @@
 import os
-from selene import browser, have
+from selene import browser, have, command
 
 
 class RegistrationPage:
     def open(self):
         browser.open('/automation-practice-form')
+        browser.driver.execute_script("$('footer').remove()")
+        browser.driver.execute_script("$('#fixedban').remove()")
+        browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
+            have.size_greater_than_or_equal(3)
+        )
+        browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
 
     def fill_full_name(self, first_name, last_name):
         browser.element('[id=firstName]').type(first_name)
