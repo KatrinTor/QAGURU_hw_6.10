@@ -1,7 +1,7 @@
 import datetime
 
-from QAGURU_hw_6_10.models.user import User
-from QAGURU_hw_6_10.pages.registration_page import RegistrationPage
+from models.user import User
+from pages.registration_page import RegistrationPage
 
 
 def test_filling_form():
