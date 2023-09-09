@@ -16,7 +16,7 @@ def test_filling_form():
         date_of_birth=datetime.date(1994, 11, 15),
         hobbies='Reading',
         subjects='Biology',
-        picture='trusost.jpg',
+        image='trusost.jpg',
         current_address='ul. Kronverksky 49',
         state='Haryana',
         city='Karnal')

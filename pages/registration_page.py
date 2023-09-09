@@ -1,9 +1,10 @@
 import os
+from pages import resources
 
 from selene import browser, have, command, be
 
-from QAGURU_hw_6_10.models import user
-from QAGURU_hw_6_10.models.user import User
+from models import user
+from models.user import User
 
 
 
@@ -17,7 +18,7 @@ class RegistrationPage:
         self.phone_number = browser.element('#userNumber')
         self.subject = browser.element('#subjectsInput')
         self.hobbies = browser.all('[for^= hobbies]')
-        self.upload_image = browser.element('#uploadPicture')
+        self.upload_file = browser.element('[type="file"]')
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -37,7 +38,7 @@ class RegistrationPage:
         self.fill_date_of_birth(user.date_of_birth)
         self.subject.type(user.subjects).press_enter()
         self.hobbies.element_by(have.text(user.hobbies)).element('..').click()
-        self.upload_image.send_keys(os.path.abspath(user.picture))
+        self.upload_file.send_keys(resources.path(user.image))
         self.fill_current_address(user.current_address)
         self.fill_state(user.state)
         self.fill_city(user.city)
@@ -57,7 +58,7 @@ class RegistrationPage:
         return self
 
     def upload_file(self, image):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(user.picture))
+        browser.element('#uploadPicture').send_keys(os.path.abspath(user.image))
 
     def fill_current_address(self, value):
         browser.element('#submit').perform(command.js.scroll_into_view)
@@ -90,7 +91,7 @@ class RegistrationPage:
                                  user.date_of_birth.year),
             f'{user.subjects}',
             f'{user.hobbies}',
-            f'{user.picture}',
+            f'{user.image}',
             f'{user.current_address}',
             f'{user.state} {user.city}'
         ))
