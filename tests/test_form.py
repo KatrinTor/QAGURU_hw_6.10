@@ -13,7 +13,7 @@ def test_fill_form():
     registration_page.fill_birthdate(1994, 'November', 15)
     registration_page.set_subject('B')
     registration_page.select_hobbie('Reading')
-    registration_page.attach_file(os.path.join(RES_DIR, 'trusost.jpg'))
+    registration_page.attach_file('trusost.jpg')
     registration_page.fill_address('ul. Kronverksky 49')
     registration_page.select_state('Haryana')
     registration_page.select_city('Karnal')
