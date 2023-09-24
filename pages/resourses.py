@@ -55,7 +55,7 @@ class RegistrationPage:
         browser.element('[id=submit]').click()
 
     def attach_file(self, name):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(name))
+        browser.element('#uploadPicture').send_keys(name)
 
     def should_have(self, full_name, email, gender, phone_number, birthday,
                     subject, hobbie, file_name, address, state_and_city):
