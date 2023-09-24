@@ -3,7 +3,7 @@ from pages import resources
 
 from selene import browser, have, command, be
 
-from models import user
+from test.conftest import RES_DIR
 from models.user import User
 
 
@@ -57,8 +57,8 @@ class RegistrationPage:
         browser.element(f'.react-datepicker__day--0{day}').click()
         return self
 
-    def upload_file(self, image):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(user.image))
+    def upload_file(self, name):
+        browser.element('#uploadPicture').send_keys(os.path.join(RES_DIR, name))
 
     def fill_current_address(self, value):
         browser.element('#submit').perform(command.js.scroll_into_view)
